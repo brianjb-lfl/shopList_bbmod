@@ -7,7 +7,7 @@ body {
 }
 
 button, input[type="text"] {
-  padding: 5px;
+  padding: 4px;
 }
 
 button:hover {
@@ -48,4 +48,33 @@ button:hover {
 
 .shopping-item__checked {
   text-decoration: line-through;
+}
+
+.formSect, #addEdit-form{
+  margin-top: 16px;
+}
+
+.form{
+  border-bottom-color: gray;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  padding-bottom: 4px;
+  margin-bottom: 8px;
+}
+
+h3{
+  font-size: 14px;
+  font-weight: bold;
+}
+
+button{
+  width: 76px;
+  height: 24px;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: #d8d8d8;
+}
+
+button-on{
+  background-color: #e1fd6f;
 }

@@ -21,7 +21,7 @@ function getItemIndexFromElement(item) {
 
 // ***** ADD ITEM SUBMIT HANDLER
 function handleNewItemSubmit() {
-  $('#js-shopping-list-form').on('click', 'button', event => {
+  $('#js-shopping-list-form').submit(function(event) {
     event.preventDefault();
     console.log('`handleNewItemSubmit` ran');
     const newItemName = $('.js-shopping-list-entry').val();
