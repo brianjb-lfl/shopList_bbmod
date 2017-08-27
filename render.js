@@ -91,6 +91,7 @@ function appSelSort(arr){
 function renderShoppingList() {
   // render the shopping list in the DOM
   console.log('`renderShoppingList` ran');
+  renderTop();
   const shoppingListItemsString = generateShoppingItemsString(STORE.itemList);
   // insert that HTML into the DOM
   $('.js-shopping-list').html(shoppingListItemsString);
