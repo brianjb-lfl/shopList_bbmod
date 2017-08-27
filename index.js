@@ -5,11 +5,10 @@ const STORE = {
     {name: "milk", price: 2.49, checked: true},
     {name: "bread", price: 1.29, checked: false}
   ],
-  editItem: null,       // null or item no
-  delItem: null,        // null or item no
+  editAdd: null,       // null, 'add', or item no being edited
   searchTxt: null,      // null or search text
-  filterApp: 'all',     // 'all', 'ch', or 'unCh'
-  sortApp: null         // null, 'hiLo', or 'loHi'
+  fMode: 'all',     // 'all', 'ch', or 'unCh'
+  sMode: null         // null, 'hiLo', 'loHi', 'alpha', 'revAlpha'
 };
 
 // ** GET ID
