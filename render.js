@@ -37,20 +37,28 @@ function generateShoppingItemsString(shoppingList) {
     return iObj;
   });
 
-  // check for edit, filter, sort
+  // check for search, edit, filter, sort
   if(STORE.editAdd === 'add'){
     itemsCopy = [];
+    $('#ae-title').text('Add item');
   }
-  else if(STORE.editAdd !== null && STORE.editAdd !== 'add'){
+  else if(STORE.editAdd !== null){
     // editing item with idx in STORE.editAdd
     itemsCopy = itemsCopy.filter( item => item.index === STORE.editAdd);
     $('[name=ae-item-name]').val(itemsCopy[0].name);
     $('[name=ae-item-price]').val(itemsCopy[0].price);
+    $('#ae-title').text('Edit item');
   }
   else{
+    if(STORE.searchTxt !== null){
+      itemsCopy = itemsCopy.filter( item => 
+        item.name.slice(0,STORE.searchTxt.length).toLowerCase() === STORE.searchTxt.toLowerCase()); 
+    }
+
     if(STORE.fMode !== 'all'){
       itemsCopy = itemsCopy.filter(appSelFilter);
     }
+
     if(STORE.sMode !== 'off'){
       appSelSort(itemsCopy);
     }

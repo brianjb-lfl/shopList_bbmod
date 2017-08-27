@@ -47,4 +47,11 @@ function setButtonStates(){
       $('#btnSrtClear').addClass('button-on');
   }
 
+  if(STORE.searchTxt!==null){
+    $('#js-sect-search .btnSave').addClass('button-on');
+  }
+  else{
+    $('#js-sect-search .btnSave').removeClass('button-on'); 
+  }
+
 }

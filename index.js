@@ -31,14 +31,18 @@ function handleAddClicked() {
 // ***** ADD/EDIT-SAVE HANDLER
 function handleAEClicked() {
   $('#js-sect-aedetail').on('click', 'button', event => {
-    console.log('`handleItemSubmit` ran');
-    const itemName = $('[name=ae-item-name]').val();
-    const itemPrice = $('[name=ae-item-price]').val();
+    if(event.currentTarget.id == 'aeBtnSave'){
+      console.log('`handleItemSubmit` ran');
+      const itemName = $('[name=ae-item-name]').val();
+      const itemPrice = $('[name=ae-item-price]').val();
+      applyToShoppingList(itemName, itemPrice);
+    }
     $('[name=ae-item-name]').val('');
     $('[name=ae-item-price]').val('');
-    applyToShoppingList(itemName, itemPrice);
+    STORE.editAdd = null;
     STORE.fMode = 'all';
     STORE.sMode = 'off';
+    STORE.searchTxt = null;
     renderShoppingList();
   });
 }
@@ -54,6 +58,21 @@ function applyToShoppingList(itemName, itemPrice) {
     STORE.itemList[STORE.editAdd].checked = false;
   }
   STORE.editAdd = null;
+}
+
+// ***** SEARCH HANDLER
+function handleSrchClicked(){
+  $('#js-sect-search').on('click', 'button', event => {
+    if(event.currentTarget.id == 'btnSrchSearch'){
+      STORE.searchTxt = $('[name=search-text-entry]').val();
+    }
+    else{
+      STORE.searchTxt = null;
+      $('[name=search-text-entry]').val('')
+    }
+    console.log('store search: ' + STORE.searchTxt);
+    renderShoppingList();
+  });
 }
 
 // ***** FILTER HANDLER
@@ -145,6 +164,7 @@ function handleShoppingList() {
   renderShoppingList();
   handleAddClicked();
   handleAEClicked();
+  handleSrchClicked();
   handleFiltSelClicked();
   handleSortSelClicked();
   handleItemCheckClicked();

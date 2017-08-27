@@ -11,24 +11,30 @@
   <body>
     <div class="container">
       <h1>Shopping List</h1>
+
+      <!-- ***** STANDARD FORM TOP ***** -->
       <div class="form" id="js-std-top">
+        <!-- Section to req add form -->
         <div class="formSect" id="js-sect-add">
           <h3>Add Item</h3>
           <button type="button">New Item</button>
         </div>
+        <!-- Search section -->
         <div class="formSect" id="js-sect-search"
           <span><h3>Search Items</h3></span>
           <label for="search-text-entry">Search</label>
           <input type="text" name="search-text-entry" class="js-shopping-list-entry" placeholder="">
-          <button type="button" class="btnSave">Search</button>
+          <button type="button" class="btnSave" id="btnSrchSearch">Search</button>
           <button type="button" class="btnCancel" id="btnSrchCancel">Clear</button>
         </div>
+        <!-- Filter section -->
         <div class="formSect" id="js-sect-filter">
           <h3>Filter Items</h3>
           <button type="button" class="btnFilt" id="btnFiltChkd">Checked</button>
           <button type="button" class="btnFilt" id="btnFiltUnChkd">UnChecked</button>
           <button type="button" class="btnFilt" id="noFilter">no Filter</button>
         </div>
+        <!-- Sort section -->
         <div class="formSect" id="js-sect-sort">
           <h3>Sort Items</h3>
           <button type="button" class="btnSort" id="btnSrtLoHi">Sort lo->hi</button>
@@ -38,6 +44,8 @@
           <button type="button" class="btnSort" id="btnSrtClear">no Sort</button>
         </div>
       </div>
+
+      <!-- ***** TEMP FORM TOP for add / edit function in progress ***** -->
       <div class="form" id="add-edit-top">
         <div class="formSect" id="js-sect-aedetail">
           <h3 id="ae-title">Add Edit Item</h3>
@@ -45,10 +53,12 @@
           <input type="text" name="ae-item-name" class="ae-input" placeholder="e.g. asparagus">
           <label for="ae-item-price">price</label>
           <input type="text" name="ae-item-price" class="ae-input" placeholder="e.g. 1.50">
-          <button type="button" class="btnSave">Save</button>
-          <button type="button" class="btnCancel">Cancel</button>
+          <button type="button" class="btnSave" id="aeBtnSave">Save</button>
+          <button type="button" class="btnCancel" id="aeBtnCancel">Cancel</button>
         </div>
       </div>
+
+      <!-- ***** DATA ***** -->
       <ul class="shopping-list js-shopping-list">
       </ul>
     </div>
