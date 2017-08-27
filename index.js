@@ -37,6 +37,39 @@ function addItemToShoppingList(itemName) {
   STORE.itemList.push({name: itemName, checked: false});
 }
 
+// ***** DETAIL HANDLER
+function handleDetSelClicked(){
+  $('#js-std-top').on('click', 'button', event => {
+    console.log($(this).attr('id'));
+    switch($(event.currentTarget).attr('id')){
+      case 'btnFiltChkd':
+        STORE.fMode = 'ch';
+        break;
+      case 'btnFiltUnChkd':
+        STORE.fMode = 'unCh';
+        break;
+      case 'noFilter':
+        STORE.fMode = 'all';
+        break;
+      case 'btnSrtLoHi':
+        STORE.sMode = 'loHi';
+        break;
+      case 'btnSrtHiLo':
+        STORE.sMode = 'hiLo';
+        break;
+      case 'btnSrtAsc':
+        STORE.sMode = 'alpha';
+        break;
+      case 'btnSrtDesc':
+        STORE.sMode = 'revAlpha';
+        break;
+      case 'btnSrtClear':
+        STORE.sMode = 'off';
+    }
+    renderShoppingList();
+  });
+}
+
 // ***** CHECK HANDLER
 function handleItemCheckClicked() {
   $('.js-shopping-list').on('click', `.js-item-toggle`, event => {
@@ -72,6 +105,7 @@ function delItemFromList(itemIndex){
 
 function handleShoppingList() {
   renderShoppingList();
+  handleDetSelClicked();
   handleNewItemSubmit();
   handleItemCheckClicked();
   handleDeleteItemClicked();
