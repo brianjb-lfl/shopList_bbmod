@@ -1,23 +1,24 @@
+// Routines to control presentation of forms and buttons
+
+// Select between standard and temp edit/save top
 function renderTop(){
-  console.log('running render top');
+  // console.log('running render top');
   let rawTxt = '';
   if(STORE.editAdd !== null){
-    console.log('edit add');
     $('#js-std-top').addClass('hidden');
     $('#add-edit-top').removeClass('hidden');
   }
   else{
-    console.log('std');
     $('#add-edit-top').addClass('hidden');
     $('#js-std-top').removeClass('hidden');
   }
 
   setButtonStates();
-
 }
 
+// Set button appearance based on context
 function setButtonStates(){
-  console.log('running setButtonStates');
+  // console.log('running setButtonStates');
   $('.btnFilt, .btnSort').removeClass('button-on');
   switch(STORE.fMode){
     case 'ch':

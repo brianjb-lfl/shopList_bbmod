@@ -1,6 +1,8 @@
 // ** GEN ITEM STRING
 function generateItemElement(item) {
   let buttonCode = ''
+
+  // turn off buttons when currently editing an item
   if(STORE.editAdd == null || STORE.editAdd == 'add'){
     buttonCode = 
       `<div class="shopping-item-controls">
@@ -21,14 +23,23 @@ function generateItemElement(item) {
       <span class="shopping-item js-shopping-item ${item.checked ? "shopping-item__checked" : ''}">
         ${item.name}:  ${item.price}</span>
         ${buttonCode}
-    </li>`;
-          
+    </li>`;          
 }
 
 // ** GEN LIST STRING
 function generateShoppingItemsString(shoppingList) {
-  console.log("Generating shopping list element");
-  let itemsCopy = shoppingList.map(function(item, index) {
+  // console.log("Generating shopping list element");
+
+  let itemsCopy = [];
+
+  // when user is entering new element, clear display of existing elements
+  if(STORE.editAdd === 'add'){
+    itemsCopy = [];
+    $('#ae-title').text('Add item');
+  }
+  else{
+  // create copy of data with indeces for manipulation in filter, sort, search
+  itemsCopy = shoppingList.map(function(item, index) {
     const iObj = {
       index: index,
       name: item.name,
@@ -36,13 +47,10 @@ function generateShoppingItemsString(shoppingList) {
       checked: item.checked};
     return iObj;
   });
+  }
 
   // check for search, edit, filter, sort
-  if(STORE.editAdd === 'add'){
-    itemsCopy = [];
-    $('#ae-title').text('Add item');
-  }
-  else if(STORE.editAdd !== null){
+  if(STORE.editAdd !== null && STORE.editAdd !=='add'){
     // editing item with idx in STORE.editAdd
     itemsCopy = itemsCopy.filter( item => item.index === STORE.editAdd);
     $('[name=ae-item-name]').val(itemsCopy[0].name);
@@ -50,20 +58,24 @@ function generateShoppingItemsString(shoppingList) {
     $('#ae-title').text('Edit item');
   }
   else{
+    // apply search
     if(STORE.searchTxt !== null){
       itemsCopy = itemsCopy.filter( item => 
         item.name.slice(0,STORE.searchTxt.length).toLowerCase() === STORE.searchTxt.toLowerCase()); 
     }
 
+    // apply filter
     if(STORE.fMode !== 'all'){
       itemsCopy = itemsCopy.filter(appSelFilter);
     }
 
+    // apply sort
     if(STORE.sMode !== 'off'){
       appSelSort(itemsCopy);
     }
   }
 
+  // bring it all together
   const items = itemsCopy.map((item) => generateItemElement(item));
   return items.join("");
 }
@@ -85,7 +97,7 @@ function appSelFilter(item){
 function appSelSort(arr){
   // applies selected sort in STORE.sMode
   // possibilities are: price: 'hiLo', 'loHi'  or name: 'alpha', 'revAlpha'
-  // this function not called if sMode = 'off'
+  // this function not be called if sMode = 'off'
   switch (STORE.sMode){
     case 'hiLo':
       arr.sort( (a, b) => b.price - a.price);
@@ -104,7 +116,7 @@ function appSelSort(arr){
 // ***** RENDER SHOPPING LIST
 function renderShoppingList() {
   // render the shopping list in the DOM
-  console.log('`renderShoppingList` ran');
+  // console.log('`renderShoppingList` ran');
   renderTop();
   const shoppingListItemsString = generateShoppingItemsString(STORE.itemList);
   // insert that HTML into the DOM

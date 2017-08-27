@@ -2,6 +2,16 @@
   box-sizing: border-box;
 }
 
+h1{
+  font-style: italic;
+  font-weight: bold;
+}
+
+h3{
+  font-size: 14px;
+  font-weight: bold;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
 }
@@ -10,14 +20,31 @@ button, input[type="text"] {
   padding: 4px;
 }
 
+button{
+  width: 76px;
+  height: 24px;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: #d8d8d8;
+}
+
+.button-on{
+  background-color: #e1fd6f;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+
 input[type="text"]{
   border-color: gray;
   border-style: solid;
   border-width: 1px;
 }
 
-button:hover {
-  cursor: pointer;
+[name=ae-item-price]{
+  width: 90px;
 }
 
 .hidden {
@@ -66,30 +93,4 @@ button:hover {
   border-bottom-style: solid;
   padding-bottom: 8px;
   margin-bottom: 8px;
-}
-
-h1{
-  font-style: italic;
-  font-weight: bold;
-}
-
-h3{
-  font-size: 14px;
-  font-weight: bold;
-}
-
-button{
-  width: 76px;
-  height: 24px;
-  font-size: 12px;
-  font-weight: bold;
-  background-color: #d8d8d8;
-}
-
-.button-on{
-  background-color: #e1fd6f;
-}
-
-[name=ae-item-price]{
-  width: 90px;
 }

@@ -8,7 +8,7 @@ const STORE = {
   editAdd: null,      // null, 'add', or item id being edited
   searchTxt: null,    // null or search text
   fMode: 'all',       // 'all', 'ch', or 'unCh'
-  sMode: 'alpha'      // 'off', 'hiLo', 'loHi', 'alpha', 'revAlpha'
+  sMode: 'off'      // 'off', 'hiLo', 'loHi', 'alpha', 'revAlpha'
 };
 
 // ** GET ID
@@ -22,7 +22,7 @@ function getItemIndexFromElement(item) {
 // ***** ADD HANDLER
 function handleAddClicked() {
   $('#js-sect-add').on('click', 'button', event => {
-    console.log('handleAddClicked ran');
+    // console.log('handleAddClicked ran');
     STORE.editAdd = 'add';
     renderShoppingList();
   });
@@ -32,7 +32,7 @@ function handleAddClicked() {
 function handleAEClicked() {
   $('#js-sect-aedetail').on('click', 'button', event => {
     if(event.currentTarget.id == 'aeBtnSave'){
-      console.log('`handleItemSubmit` ran');
+      // console.log('`handleItemSubmit` ran');
       const itemName = $('[name=ae-item-name]').val();
       const itemPrice = $('[name=ae-item-price]').val();
       applyToShoppingList(itemName, itemPrice);
@@ -49,13 +49,12 @@ function handleAEClicked() {
 
 // ** ADD ITEM
 function applyToShoppingList(itemName, itemPrice) {
-  console.log(`Adding "${itemName}" to shopping list`);
+  // console.log(`Adding "${itemName}" to shopping list`);
   if(STORE.editAdd === 'add'){
     STORE.itemList.push({name: itemName, price: itemPrice, checked: false});}
   else{
     STORE.itemList[STORE.editAdd].name = itemName;
     STORE.itemList[STORE.editAdd].price = itemPrice;
-    STORE.itemList[STORE.editAdd].checked = false;
   }
   STORE.editAdd = null;
 }
@@ -64,13 +63,15 @@ function applyToShoppingList(itemName, itemPrice) {
 function handleSrchClicked(){
   $('#js-sect-search').on('click', 'button', event => {
     if(event.currentTarget.id == 'btnSrchSearch'){
-      STORE.searchTxt = $('[name=search-text-entry]').val();
+      if($('[name=search-text-entry]').val()){
+        STORE.searchTxt = $('[name=search-text-entry]').val();
+      }
     }
     else{
       STORE.searchTxt = null;
       $('[name=search-text-entry]').val('')
     }
-    console.log('store search: ' + STORE.searchTxt);
+    // console.log('store search: ' + STORE.searchTxt);
     renderShoppingList();
   });
 }
@@ -120,7 +121,7 @@ function handleSortSelClicked(){
 // ***** CHECK HANDLER
 function handleItemCheckClicked() {
   $('.js-shopping-list').on('click', `.js-item-toggle`, event => {
-    console.log('`handleItemCheckClicked` ran');
+    // console.log('`handleItemCheckClicked` ran');
     const itemIndex = getItemIndexFromElement(event.currentTarget);
     toggleCheckedForListItem(itemIndex);
     renderShoppingList();
@@ -129,14 +130,14 @@ function handleItemCheckClicked() {
 
 // ** TOGGLE CHECKED
 function toggleCheckedForListItem(itemIndex) {
-  console.log("Toggling checked property for item at index " + itemIndex);
+  // console.log("Toggling checked property for item at index " + itemIndex);
   STORE.itemList[itemIndex].checked = !STORE.itemList[itemIndex].checked;
 }
 
 // ***** EDIT HANDLER
 function handleEditItemClicked() {
   $('.js-shopping-list').on('click', `.js-item-edit`, event => {
-    console.log('handleEditItemClicked ran');
+    // console.log('handleEditItemClicked ran');
     const itemIndex = getItemIndexFromElement(event.currentTarget);
     STORE.editAdd = itemIndex;
     renderShoppingList();
@@ -146,7 +147,7 @@ function handleEditItemClicked() {
 // ***** DELETE HANDLER
 function handleDeleteItemClicked() {
   $('.js-shopping-list').on('click', `.js-item-delete`, event => {
-  console.log('`handleDeleteItemClicked` ran')
+  // console.log('`handleDeleteItemClicked` ran')
   const itemIndex = getItemIndexFromElement(event.currentTarget);
   delItemFromList(itemIndex);
   renderShoppingList();
@@ -155,7 +156,7 @@ function handleDeleteItemClicked() {
 
 // ** DELETE ITEM
 function delItemFromList(itemIndex){
-  console.log('`delItemFromList` ran');
+  // console.log('`delItemFromList` ran');
   STORE.itemList.splice(itemIndex,1);
 }
 
