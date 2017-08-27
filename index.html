@@ -12,6 +12,42 @@
     <div class="container">
       <h1>Shopping List</h1>
       <div class="form" id="js-std-top">
+        <div class="formSect" id="js-sect-add">
+          <h3>Add Item</h3>
+          <button type="button">New Item</button>
+        </div>
+        <div class="formSect" id="js-sect-search"
+          <span><h3>Search Items</h3></span>
+          <label for="search-text-entry">Search</label>
+          <input type="text" name="search-text-entry" class="js-shopping-list-entry" placeholder="">
+          <button type="button" class="btnSave">Search</button>
+          <button type="button" class="btnCancel" id="btnSrchCancel">Clear</button>
+        </div>
+        <div class="formSect" id="js-sect-filter">
+          <h3>Filter Items</h3>
+          <button type="button" class="btnFilt" id="btnFiltChkd">Checked</button>
+          <button type="button" class="btnFilt" id="btnFiltUnChkd">UnChecked</button>
+          <button type="button" class="btnFilt" id="noFilter">no Filter</button>
+        </div>
+        <div class="formSect" id="js-sect-sort">
+          <h3>Sort Items</h3>
+          <button type="button" class="btnSort" id="btnSrtLoHi">Sort lo->hi</button>
+          <button type="button" class="btnSort" id="btnSrtHiLo">Sort hi->lo</button>
+          <button type="button" class="btnSort" id="btnSrtAsc">Sort a->z</button>
+          <button type="button" class="btnSort" id="btnSrtDesc">Sort z->a</button>
+          <button type="button" class="btnSort" id="btnSrtClear">no Sort</button>
+        </div>
+      </div>
+      <div class="form" id="add-edit-top">
+        <div class="formSect" id="js-sect-aedetail">
+          <h3 id="ae-title">Add Edit Item</h3>
+          <label for="ae-item-name">name</label>
+          <input type="text" name="ae-item-name" class="ae-input" placeholder="e.g. asparagus">
+          <label for="ae-item-price">price</label>
+          <input type="text" name="ae-item-price" class="ae-input" placeholder="e.g. 1.50">
+          <button type="button" class="btnSave">Save</button>
+          <button type="button" class="btnCancel">Cancel</button>
+        </div>
       </div>
       <ul class="shopping-list js-shopping-list">
       </ul>

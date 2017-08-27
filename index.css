@@ -89,3 +89,7 @@ button{
 .button-on{
   background-color: #e1fd6f;
 }
+
+[name=ae-item-price]{
+  width: 90px;
+}

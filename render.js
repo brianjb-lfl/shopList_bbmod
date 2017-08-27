@@ -38,9 +38,15 @@ function generateShoppingItemsString(shoppingList) {
   });
 
   // check for edit, filter, sort
-  if(STORE.editAdd !== null && STORE.editAdd !== 'add'){
+  if(STORE.editAdd === 'add'){
+    itemsCopy = [];
+  }
+  else if(STORE.editAdd !== null && STORE.editAdd !== 'add'){
     // editing item with idx in STORE.editAdd
-    itemsCopy = itemsCopy.filter( item => item.index === STORE.editAdd);}
+    itemsCopy = itemsCopy.filter( item => item.index === STORE.editAdd);
+    $('[name=ae-item-name]').val(itemsCopy[0].name);
+    $('[name=ae-item-price]').val(itemsCopy[0].price);
+  }
   else{
     if(STORE.fMode !== 'all'){
       itemsCopy = itemsCopy.filter(appSelFilter);
