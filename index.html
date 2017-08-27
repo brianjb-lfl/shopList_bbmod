@@ -11,25 +11,25 @@
 <body>
     <div class="container">
         <h1>Shopping List</h1>
-        <div class="form" id="js-shopping-list-form">
-          <div class="formSect" id="sectAdd">
+        <div class="form" id="js-std-top">
+          <div class="formSect" id="js-sect-add">
             <h3>Add Item</h3>
             <button type="button">New Item</button>
           </div>
-          <div class="formSect" id="sectSrch"
+          <div class="formSect" id="js-sect-search"
             <span><h3>Search Items</h3></span>
             <label for="search-text-entry">Search</label>
             <input type="text" name="search-text-entry" class="js-shopping-list-entry" placeholder="">
             <button type="submit" class="btnSave">Go search</button>
             <button type="button" class="btnCancel" id="btnSrchCancel">Clear</button>
           </div>
-          <div class="formSect" id="sectFilter">
+          <div class="formSect" id="js-sect-filter">
             <h3>Filter Items</h3>
             <button type="button" class="btnSave" id="btnFiltChkd">Checked</button>
             <button type="button" class="btnSave" id="btnFiltUnChkd">UnChecked</button>
             <button type="button" class="btnSave" id="noFilter">no Filter</button>
           </div>
-          <div class="formSect" id="sectSort">
+          <div class="formSect" id="js-sect-sort">
             <h3>Sort Items</h3>
             <button type="button" class="btnSave" id="btnSrtLoHi">Sort lo->hi</button>
             <button type="button" class="btnSave" id="btnSrtHiLo">Sort hi->lo</button>
@@ -39,8 +39,8 @@
           </div>
         </div>
 
-        <div class="form hidden" id="addEdit-form">
-          <div class="formSect" id="sectAddEdit">
+        <div class="form hidden" id="add-edit-top">
+          <div class="formSect" id="js-sect-aedetail">
             <h3>Add Edit Item</h3>
             <label for="shopping-list-entry"></label>
             <input type="text" name="shopping-list-entry" class="js-shopping-list-entry" placeholder="">

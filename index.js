@@ -5,10 +5,10 @@ const STORE = {
     {name: "milk", price: 2.49, checked: true},
     {name: "bread", price: 1.29, checked: false}
   ],
-  editAdd: null,       // null, 'add', or item no being edited
-  searchTxt: null,      // null or search text
-  fMode: 'all',     // 'all', 'ch', or 'unCh'
-  sMode: 'alpha'         // 'off', 'hiLo', 'loHi', 'alpha', 'revAlpha'
+  editAdd: null,      // null, 'add', or item no being edited
+  searchTxt: null,    // null or search text
+  fMode: 'all',       // 'all', 'ch', or 'unCh'
+  sMode: 'alpha'      // 'off', 'hiLo', 'loHi', 'alpha', 'revAlpha'
 };
 
 // ** GET ID
@@ -21,7 +21,7 @@ function getItemIndexFromElement(item) {
 
 // ***** ADD ITEM SUBMIT HANDLER
 function handleNewItemSubmit() {
-  $('#js-shopping-list-form').on('click', 'button', event => {
+  $('#js-sect-add').on('click', 'button', event => {
     event.preventDefault();
     console.log('`handleNewItemSubmit` ran');
     const newItemName = $('.js-shopping-list-entry').val();
